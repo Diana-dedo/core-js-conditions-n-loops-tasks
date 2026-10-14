@@ -498,7 +498,8 @@ function shuffleChar(str, iterations) {
   if (iterations === 0 || str.length <= 1) return str;
   let current = str;
   let period = 0;
-  while (true) {
+  const isSearching = true;
+  while (isSearching) {
     let evenChars = '';
     let oddChars = '';
     for (let i = 0; i < current.length; i += 1) {
