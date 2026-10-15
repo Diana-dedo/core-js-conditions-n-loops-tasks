@@ -575,20 +575,26 @@ function getNearestBigger(number) {
   const tempDigit = digits[pivotIndex];
   digits[pivotIndex] = digits[swapIndex];
   digits[swapIndex] = tempDigit;
-
-  let left = pivotIndex + 1;
-  let right = digits.length - 1;
-  while (left < right) {
-    const t = digits[left];
-    digits[left] = digits[right];
-    digits[right] = t;
-    left += 1;
-    right -= 1;
+  const leftPart = [];
+  const rightPart = [];
+  for (let i = 0; i <= pivotIndex; i += 1) {
+    leftPart[i] = digits[i];
   }
-
+  let rightIdx = 0;
+  for (let i = digits.length - 1; i > pivotIndex; i -= 1) {
+    rightPart[rightIdx] = digits[i];
+    rightIdx += 1;
+  }
+  const finalDigits = [];
+  for (let i = 0; i < leftPart.length; i += 1) {
+    finalDigits[finalDigits.length] = leftPart[i];
+  }
+  for (let i = 0; i < rightPart.length; i += 1) {
+    finalDigits[finalDigits.length] = rightPart[i];
+  }
   let resultNumber = 0;
-  for (let i = 0; i < digits.length; i += 1) {
-    resultNumber = resultNumber * 10 + digits[i];
+  for (let i = 0; i < finalDigits.length; i += 1) {
+    resultNumber = resultNumber * 10 + finalDigits[i];
   }
   return resultNumber;
 }
