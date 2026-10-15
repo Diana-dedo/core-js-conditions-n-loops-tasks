@@ -329,6 +329,7 @@ function isContainNumber(num, digit) {
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
 function getBalanceIndex(arr) {
+  let balanceIndex = -1;
   for (let i = 0; i < arr.length; i += 1) {
     let leftSum = 0;
     let rightSum = 0;
@@ -339,10 +340,10 @@ function getBalanceIndex(arr) {
       rightSum += arr[k];
     }
     if (leftSum === rightSum) {
-      return i;
+      balanceIndex = i;
     }
   }
-  return -1;
+  return balanceIndex;
 }
 
 /**
